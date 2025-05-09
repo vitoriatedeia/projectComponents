@@ -1,23 +1,27 @@
 import { StatusBar } from "expo-status-bar";
-import { Text, View } from "react-native";
+import { Text, View, Button } from "react-native";
 
 // IMPORT STYLES
 import { styles } from "./src/styles/Styles";
 
+// IMPORT COMPONENT
+import { FirstComponent } from "./src/components/SecondComponents";
+import Components from "./src/components/SecondComponents";
+
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <FirstComponent />
-      <StatusBar style="auto" />
-    </View>
+    <FatherComponent>
+      <Text>Componente Filho</Text>
+      <Button title="Button Componente Filho"></Button>
+    </FatherComponent>
   );
 }
 
-const FirstComponent = () => {
+function FatherComponent({ children }) {
   return (
-    <View>
-      <Text>Meu primeiro componente</Text>
+    <View style={styles.container}>
+      <Text>Texto do Componente Pai</Text>
+      {children}
     </View>
   );
-};
+}
